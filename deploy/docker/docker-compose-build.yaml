@@ -1,0 +1,18 @@
+version: "3"
+services:
+  reverseproxy:
+    build:
+      context: .
+    image: image-proxy
+  backend_user:
+    build:
+      context: ../../service/user
+    image: image_user
+  backend_feed:
+    build:
+      context: ../../service/feed
+    image: image_feed
+  frontend:
+    build:
+      context: ../../web-ui
+    image: image_frontend
