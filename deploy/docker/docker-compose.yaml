@@ -1,0 +1,22 @@
+version: "3"
+services:
+  reverseproxy:
+      image: image-proxy
+      ports:
+          - 9000:9000
+      restart: always
+      depends_on:
+        - backend-user
+        - backend-feed     
+  backend-user:
+    image: image_user
+    volumes:
+      - $HOME/.aws:/root/.aws
+  backend-feed:
+    image: image_feed
+    volumes:
+      - $HOME/.aws:/root/.aws
+  frontend:
+    image: image_frontend
+    ports:
+      - "8100:4200"
